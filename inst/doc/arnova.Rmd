@@ -1,0 +1,179 @@
+---
+title: "RcmdrPlugin.aRnova: a Tutorial (in progress...)"
+author: "Jessica Mange and Arnaud Travert"
+date: '`r Sys.Date()`'
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{"RcmdrPlugin.aRnova: a Tutorial (in progress...)"}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}     
+  
+---
+
+## 1. Introduction
+
+RcmdrPlugin.aRnova is a R Commander add-on for repeated-measures and mixed-design ('split-plot') analysis of variance (ANOVA). In essence it adds a new menu entry for repeated measures that allows to deal with up to three within-subject factors and optionally with one or several between-subject factors.
+Besides, it also provides supplementary options and outputs to the existing `One Way ANOVA` and `Multi Way ANOVA` entries, such as the choice of type of sum of squares (II or III), the calculation of effect sizes, or multiway ANOVA post-hoc analysis.
+
+This tutorial (not finished yet...) aims to illustrate typical use of this plugin by replicating ANOVAs described in John Fox' *R and S-plus Companion to Applied Regession* (SAGE Publications Inc. 2002). While all steps are illustrated in the following, the user is expected to have minimal proficiency in using Rcmdr.
+
+## 2. Installation and loading of RcmdrPlugin.aRnova
+
+The fastest way is to load directly the package from the following R command line which causes the package to load Rcmdr *with* the aRnova plugin:
+
+    > library("RcmdrPlugin.aRnova")
+
+Alternatively, after loading Rcmdr *without* the aRnova plugin using:
+
+    > library("Rcmdr")
+
+The aRnova package can then be loaded using the `Tools` > `Load Packages...` menu entry in Rcmdr. The user is then asked to restart Rcmdr so that the Plug-in is available.
+
+
+It can be verified that aRnova has been effectively loaded by checking that the supplementary entry `Repeated measures ANOVA...` has been added in the `Statistics` > `Means` Rcmr menu.
+
+ <img src="Figure2.png" width="500px" />
+
+
+
+## 3. One-way ANOVA
+
+#### To be completed....
+
+## 4. Multi Way ANOVA 
+
+The multiway ANOVA is illustrated here using the data form Moore and Krupat (1971) on conformity. The dataset can be found in the *car* package (`Moore.rda`) and in the present package for convenience.  The treatment below reproduces the treatmant of section 4.3 of John Fox *R and S-plus Companion to Applied Regession* (SAGE Publications, 2002).
+
+Figure 3 below illustrates how to (1) load and (2) view the Moore dataset which first entries are shown in (3). In this experiment, the `conformity` (DV, 1st columbns) of each subject interacting with a partner of either 'low' or 'high' status (`partner.status`, 1st IV, 2nd column) and'low', 'medium' or 'high' authoritarism (`fcategory`, 2nd IV, 3rd column).
+
+ <img src="Figure3b.png" width="500px" />
+
+
+### 4.1. levels reordering
+The replication of this analysis starts by re-ordering the levels of `fcategory` in the order low < medium < high (the default ordering is the alphabetical order). This reordering is essentially for graphical purpose. This can be done in Rcmdr by using the menu entry `Data` > `Manage variables in the active dataset` > `Reorder factor levels...` as illustrated in Figure 2.
+
+ <img src="Figure4.png" width="500px" />
+
+After re-ordering, the means of all combinations of factors (*cells*) can be plot using the menu entry `Graphs` > `Plot of means...` which yields the dialog box shown in Figure 3.1. The graph in Figure 3.2 is obtained after selecting the two factors and `conformity` as the response variable. 
+
+This graph shows a clear effect of `partner.status` on the conformity (whereby high status yields higher conformity), *providing* the authoritarism (`fcategory`) remains low or medium. Overall, this suggest a main effect of `partner.status` and an interaction between `partner.status` and `fcategory` on `conformity`. This will be checked in the following using a two-way ANOVA of `conformity` using `partner.status` and `fcategory` as factors.
+
+ <img src="Figure5.png" width="700px" />
+
+### 4.2. two-way analysis of variance
+
+The multiway ANOVA dialog box  is accessed by the `Statistics` > `Means` > `Multi-way ANOVA...` menu entry. It presents two tabs (`Data` and `Options`) shown in Figure 4. 
+
+ <img src="Figure6.png" width="700px" />
+
+With the settings shown in Figure X, a two-way ANOVA model is fitted to the data employing sum-to-zero contrasts, and a type II test which is the default in the `car::ANOVA()` function used in aRnova (see J Fox textbook for details on the choice of contrasts and type of sum of squares).
+The R commands and results are displayed in the output window as shown in Figure Y and reproduced below: 
+
+    > options(contrasts = c('contr.sum', 'contr.poly'))
+    > MooreModel.1 <- lm(conformity ~ fcategory*partner.status, data=Moore)
+    > .myAnova <- Anova(MooreModel.1, type = 2)
+    > .myAnova
+    Anova Table (Type II tests)
+    Response: conformity
+                          Sum Sq Df F value   Pr(>F)   
+    fcategory                 11.61  2  0.2770 0.759564   
+    partner.status           212.21  1 10.1207 0.002874 **
+    fcategory:partner.status 175.49  2  4.1846 0.022572 * 
+    Residuals                817.76 39                    
+    ---
+    Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+These results indicate a significant effect of `partner.status` on the conformity, as well as an interaction between `fcategory` and `partner.status` affecting conformity, as was anticipated in this study. The use of Type III sum of squares (widely used and the default in many other statistics packages) leads to similar results. 
+
+Depending on the options chosen, supplementary output is given:
+
+
+***Efffect size***
+
+When selecting `Effect size` in the `Options` tab, partial eta squared ($\eta^2$) are computed and displayed as follows. In the present case, these values show that both the main effect and interaction effect have a large effect size according to Cohen's guidelines:
+
+    >  \# EFFECT SIZE
+    > .effectSize <- data.frame(format(round(.myAnova$`Sum Sq` / sum(.myAnova$`Sum Sq`), 4), nsmall = 4), row.names = rownames(.myAnova))
+    
+    > colnames(.effectSize) <- c("part. eta sq.")
+    
+    > .effectSize
+                             part. eta sq.
+    fcategory                       0.0095
+    partner.status                  0.1744
+    fcategory:partner.status        0.1442
+    Residuals                       0.6719
+
+***summary statistics of groups***
+
+When this option is selected in the `Options` tab, the mean, standard deviations and number of observations for each combination of factor levels (*cells*): 
+
+    > \# NUMERIC SUMMARY OF GROUPS
+
+    > with(Moore, (tapply(conformity, list(fcategory, partner.status), mean, na.rm=TRUE))) # means
+           high    low
+    low    17.40000  8.900
+    medium 14.27273  7.250
+    high   11.85714 12.625
+    
+    > with(Moore, (tapply(conformity, list(fcategory, partner.status), sd, na.rm=TRUE))) # std. deviations
+              high      low
+    low    4.505552 2.643651
+    medium 3.951985 3.947573
+    high   3.933979 7.347254
+    
+    > with(Moore, (tapply(conformity, list(fcategory, partner.status), function(x) sum(!is.na(x))))) # counts
+           high low
+    low       5  10
+    medium   11   4
+    high      7   8
+
+
+***post-hoc analysis***
+When this option is selected in the `Options` tab, post-hoc analysis on significant or close to significant effects is carried out. To this aim an 'extended' dataset (with the extension `.extd`) is generated. This dataset contains additional factor combinations that allows particularizing each combination of factor levels (*cell*) and is useful for plotting means, data mining, and post-hoc analysis. Hence, in the present case, a supplementary column `fcategory.partner.status` is generated. This allows, for instance, to generate the boxplots corresponding to each cell (`Graphs` > `Boxplot...`), as examplified in Figure.
+
+ <img src="Figure7.png" width="700px" />
+ 
+The post-hoc analysis consist in pairwise comparison between cells using Tukey's HSD test when interactions are significant (p < .05) or close to significant (p < 0.1) . In the present case, the interaction between the two factors is sginficant (p = 0.02, see above), which triggers the pairwise comparison:    
+
+    > summary(glht(aov(conformity ~ fcategory.partner.status, data = Moore.extd), linfct = mcp(fcategory.partner.status = "Tukey")))
+    
+    	 Simultaneous Tests for General Linear Hypotheses
+    
+    Multiple Comparisons of Means: Tukey Contrasts
+    
+    
+    Fit: aov(formula = conformity ~ fcategory.partner.status, data = Moore.extd)
+    
+    Linear Hypotheses:
+                                  Estimate Std. Error t value Pr(>|t|)  
+    medium.high - low.high == 0    -3.1273     2.4698  -1.266   0.7975  
+    high.high - low.high == 0      -5.5429     2.6813  -2.067   0.3202  
+    low.low - low.high == 0        -8.5000     2.5081  -3.389   0.0183 *
+    medium.low - low.high == 0    -10.1500     3.0718  -3.304   0.0227 *
+    high.low - low.high == 0       -4.7750     2.6105  -1.829   0.4543  
+    high.high - medium.high == 0   -2.4156     2.2140  -1.091   0.8795  
+    low.low - medium.high == 0     -5.3727     2.0008  -2.685   0.0989 .
+    medium.low - medium.high == 0  -7.0227     2.6736  -2.627   0.1124  
+    high.low - medium.high == 0    -1.6477     2.1277  -0.774   0.9695  
+    low.low - high.high == 0       -2.9571     2.2566  -1.310   0.7737  
+    medium.low - high.high == 0    -4.6071     2.8701  -1.605   0.5950  
+    high.low - high.high == 0       0.7679     2.3699   0.324   0.9995  
+    medium.low - low.low == 0      -1.6500     2.7090  -0.609   0.9895  
+    high.low - low.low == 0         3.7250     2.1721   1.715   0.5252  
+    high.low - medium.low == 0      5.3750     2.8041   1.917   0.4024  
+    ---
+    Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+    (Adjusted p values reported -- single-step method)
+
+This post-hoc analysis show that the significant interaction comes from differences between low authoritarism/low status and low authoritarism/high status, as well as between medium authoritarism/low status and low authoritarism/high status. As shown in the previous plots, these two pairs of cells present indeed the largest differences of conformity. 
+
+### 5. Repeated Measures ANOVA
+
+To conduct an ANOVA using a repeated measures design, activate  the    
+dialog box entitleded "Definition of Within-subject factors" in the menu `Statistics -> Means -> Repeated Measures ANOVA...`    
+In this dialog box, you have to supply a name and a number of levels for each of the within-subject (repeated
+-measures) variable.  A valid within-factor entry must consist in a syntactically valid name (see make.names) and 2 levels or more. 
+On clicking the OK button, the first valid entries are kept and used  
+
+#### To be continued...

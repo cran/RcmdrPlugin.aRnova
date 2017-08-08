@@ -1,0 +1,51 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: RcmdrPlugin.aRnova 0.0.1\n"
+"POT-Creation-Date: 2016-03-11 00:01\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+
+msgid "Definition of Within-subject factorS."
+msgstr ""
+
+msgid "factor_1"
+msgstr ""
+
+msgid "You must define at least one within subject variable."
+msgstr ""
+
+msgid "Factor Name"
+msgstr ""
+
+msgid "Number of levels"
+msgstr ""
+
+msgid "Repeated measures Analysis of Variance"
+msgstr ""
+
+msgid "2. Select within-subject variables"
+msgstr ""
+
+msgid "Factor(s):"
+msgstr ""
+
+msgid "Variable level(s):"
+msgstr ""
+
+msgid "2. Select between-subject variables (pick none, one or more)"
+msgstr ""
+
+msgid "Factor(s):"
+msgstr ""
+
+msgid "You must select one measure per variable."
+msgstr ""
+
+msgid "#### Type II ANOVA ###"
+msgstr "ANOVA type II"
+

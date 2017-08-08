@@ -1,0 +1,18 @@
+# RcmdrPlugin.Ranova Menu Definitions
+
+# last modified 2016-03-06 by A.T.
+
+
+#   type    menu/item      operation/parent  label                                          command/menu                activation  install?
+
+remove    generalizedLinearModel    ""		""										""							""						""
+remove    multinomialLogitModel    ""		""										""							""						""
+remove    ordinalRegressionModel    ""		""										""							""						""
+remove    oneWayAnova    ""		""										""							""						""
+remove    multiWayAnova    ""		""										""							""						""
+item    meansMenu       command         "One-way ANOVA..."                              oneWayAnova_                 "numericP() && factorsP()"   "packageAvailable('multcomp') && packageAvailable('abind')"
+item    meansMenu       command         "Multi-way ANOVA..."                            multiWayAnova_               "numericP() && factorsP()"          ""
+item    meansMenu       command         "Repeated-measures ANOVA..."                    repMeasAnovaSetup               "numericP()"          ""
+item    statModelsMenu  command         "Generalized linear model..."                   generalizedLinearModel_      "activeDataSetP()"          ""
+item    statModelsMenu  command         "Multinomial logit model..."                    multinomialLogitModel       "factorsP()" "packageAvailable('nnet')"
+item    statModelsMenu  command         "Ordinal regression model..."                   ordinalRegressionModel      "factorsP()" "packageAvailable('MASS')"

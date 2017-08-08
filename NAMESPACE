@@ -1,0 +1,7 @@
+
+
+import(Rcmdr)
+importFrom(tcltk, tkbutton, tkget)
+importFrom(stats, pf)
+importFrom(utils, combn) 
+exportPattern("^[^\\.]")
