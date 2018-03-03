@@ -12,7 +12,7 @@
 
 <meta name="author" content="Jessica Mange and Arnaud Travert" />
 
-<meta name="date" content="2017-08-08" />
+<meta name="date" content="2018-03-03" />
 
 <title>RcmdrPlugin.aRnova: a Tutorial (in progress…)</title>
 
@@ -32,19 +32,22 @@
 
 <h1 class="title toc-ignore">RcmdrPlugin.aRnova: a Tutorial (in progress…)</h1>
 <h4 class="author"><em>Jessica Mange and Arnaud Travert</em></h4>
-<h4 class="date"><em>2017-08-08</em></h4>
+<h4 class="date"><em>2018-03-03</em></h4>
 
 
 
 <div id="introduction" class="section level2">
 <h2>1. Introduction</h2>
 <p>RcmdrPlugin.aRnova is a R Commander add-on for repeated-measures and mixed-design (‘split-plot’) analysis of variance (ANOVA). In essence it adds a new menu entry for repeated measures that allows to deal with up to three within-subject factors and optionally with one or several between-subject factors. Besides, it also provides supplementary options and outputs to the existing <code>One Way ANOVA</code> and <code>Multi Way ANOVA</code> entries, such as the choice of type of sum of squares (II or III), the calculation of effect sizes, or multiway ANOVA post-hoc analysis.</p>
-<p>This tutorial (not finished yet…) aims to illustrate typical use of this plugin by replicating ANOVAs described in John Fox’ <em>R and S-plus Companion to Applied Regession</em> (SAGE Publications Inc. 2002). While all steps are illustrated in the following, the user is expected to have minimal proficiency in using Rcmdr.</p>
+<p>This tutorial (not finished yet…) aims to illustrate typical use of this plugin by replicating ANOVAs described in particular in John Fox’ <em>R and S-plus Companion to Applied Regession</em> (SAGE Publications Inc. 2002). While all steps are illustrated in the following, the user is expected to have minimal proficiency in using Rcmdr.</p>
 </div>
 <div id="installation-and-loading-of-rcmdrplugin.arnova" class="section level2">
 <h2>2. Installation and loading of RcmdrPlugin.aRnova</h2>
-<p>The fastest way is to load directly the package from the following R command line which causes the package to load Rcmdr <em>with</em> the aRnova plugin:</p>
+<p>The aRnova plugin can be downloaded and installed using:</p>
+<pre><code>&gt; install.packages(&quot;RcmdrPlugin.aRnova&quot;)</code></pre>
+<p>To load the package the fastest way is to use the following R command line which causes the package to load Rcmdr <em>simultaneously with</em> the aRnova plugin:</p>
 <pre><code>&gt; library(&quot;RcmdrPlugin.aRnova&quot;)</code></pre>
+<p>Note that if aRnova has just been installed, restart a new R session before launching this command (else the following error may occur: <code>Error : .onAttach failed in attachNamespace() for [....]</code>).</p>
 <p>Alternatively, after loading Rcmdr <em>without</em> the aRnova plugin using:</p>
 <pre><code>&gt; library(&quot;Rcmdr&quot;)</code></pre>
 <p>The aRnova package can then be loaded using the <code>Tools</code> &gt; <code>Load Packages...</code> menu entry in Rcmdr. The user is then asked to restart Rcmdr so that the Plug-in is available.</p>

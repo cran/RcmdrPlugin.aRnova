@@ -8,8 +8,14 @@
 #          It also provides supplmementary options to oneWayAnova() and 
 #          multiWayAnova() functions, such as choice of anova type, display of 
 #          effect sizes and post hoc analysis for multiWayAnova.
+#
 # ----------------------------------------------------------------------------
-
+# Release Notes:
+#     2018-03-03, version 0.0.5: bug fix: effect size for oneway repeated 
+#       measure
+#     2017-08-08, version 0.0.4: initial release on CRAN
+#------------------------------------------------------------------------------     
+#     
 # The following is added to remove a NOTE in cran check
 utils::globalVariables(c(".myAnova", "buttonsFrame", "checkBoxFrame","dataTab", 
                          "effectSizeVariable", "formulaFrame", 
@@ -96,7 +102,6 @@ repMeasAnovaSetup <- function () {
   entrylevelsW3 <- ttkentry(top, width="4", textvariable=levelsW3)
 
   #' @import tcltk Rcmdr
-  #' 
    
   onOK <- function()
     {
@@ -621,12 +626,27 @@ repMeasAnova <- function(.withinfactors, .withinlevels){
 
    if (effectSizeVar == 1) {
    logger("# COMPUTE EFFECT SIZE")
-     command <- character(4)
-     command[1] <- paste(".effectSize <- data.frame(row.names = .myAnova$terms)", sep="")
-     command[2] <- paste("for (.term in .myAnova$terms)", sep="")                    
-     command[3] <- paste("  .effectSize[.term,\"part. eta sq.\"] <- .myAnova$SSP[[.term]] / (.myAnova$SSP[[.term]] + .myAnova$SSPE[[.term]]) ", sep="")
-     command[4] <- paste("format(round(.effectSize, 4), nsmall = 4)")
-     doItAndPrint(paste(command, collapse="\n"))
+     if (length(betweenfactors) > 0){
+         #multivariate
+         command <- character(4)
+         command[1] <- paste(".effectSize <- data.frame(row.names = .myAnova$terms)", sep="")
+         command[2] <- paste("for (.term in .myAnova$terms)", sep="")                    
+         command[3] <- paste("  .effectSize[.term,\"partial eta squared\"] <- .myAnova$SSP[[.term]] / (.myAnova$SSP[[.term]] + .myAnova$SSPE[[.term]]) ", sep="")
+         command[4] <- paste("format(round(.effectSize, 4), nsmall = 4)")
+         doItAndPrint(paste(command, collapse="\n"))
+   } else {
+         #monovariate
+         command <- character(8)
+         command[1] <- paste(".effectSize  <- data.frame(row.names = .myAnova$terms)", sep="")
+         command[2] <- paste("for (.term in .myAnova$terms){", sep="") 
+         command[3] <- paste("    P        <- .myAnova$P[[.term]]", sep="")
+         command[4] <- paste("    PtPinv   <- solve(t(P) %*% P)", sep="")     
+         command[5] <- paste("    SS       <- sum(diag(.myAnova$SSP[[.term]] %*% PtPinv))", sep="")
+         command[6] <- paste("    Error_SS <- sum(diag(.myAnova$SSPE[[.term]] %*% PtPinv))", sep="")
+         command[7] <- paste(".effectSize[.term,\"partial eta squared\"] <- SS / (SS + Error_SS)}", sep="")
+         command[8] <- paste("format(round(.effectSize, 4), nsmall = 4)")
+         doItAndPrint(paste(command, collapse="\n"))    
+         }
    }
    
    if (groupSummaryVar == 1) {

@@ -1,11 +1,16 @@
 Package: RcmdrPlugin.aRnova
 Type: Package
 Title: R Commander Plug-in for Repeated-Measures ANOVA
-Version: 0.0.4
-Date: 2017-07-18
-Author: Jessica Mange <jessica.mange@unicaen.fr>
-    Arnaud Travert <arnaud.travert@unicaen.fr>
+Version: 0.0.5
+Date: 2018-03-03
+Author: Arnaud Travert [aut, cre],
+  Jessica Mange [aut]
 Maintainer: Arnaud Travert <arnaud.travert@unicaen.fr>
+Authors@R: c(
+              person(given = "Arnaud", family = "Travert", role = c("aut", "cre"), 
+                     email = "arnaud.travert@unicaen.fr"),
+              person(given = "Jessica", family = "Mange", role = "aut")
+             )
 Depends: R (>= 3.2.0)
 Imports: Rcmdr
 Suggests: knitr
@@ -24,6 +29,6 @@ LazyData: yes
 NeedsCompilation: no
 RoxygenNote: 6.0.1
 VignetteBuilder: knitr
-Packaged: 2017-08-08 07:34:42 UTC; Arnaud
+Packaged: 2018-03-03 11:53:45 UTC; Arnaud
 Repository: CRAN
-Date/Publication: 2017-08-08 09:03:47 UTC
+Date/Publication: 2018-03-03 12:30:33 UTC

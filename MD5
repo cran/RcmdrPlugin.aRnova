@@ -1,12 +1,12 @@
-68a689126e2f7334dc45bcb1a322b73d *DESCRIPTION
+e3900c1829f17ac1c7c16873cdf11e19 *DESCRIPTION
 9e95fd8c4476626ababcfcbbf02d5339 *NAMESPACE
-faf9de0090802f5e472bb64c1eb1805d *R/aRnova.R
-16dca0e87bd89be1b51f37d059027120 *build/vignette.rds
+0d29cd3e93a5a0f70b6a18911bbf7683 *R/aRnova.R
+68bc0abcc81e3f9912ac46dd716c9cb9 *build/vignette.rds
 c1c386c2dc0d0fdd2700861c8f1686a4 *data/Moore.rda
 7ec9fdd5e66252428092697f66e79707 *data/OBrienKaiser.rda
 5f091956879e22328212984c21d97a24 *data/Pottery.rda
-d685e18782ce00c242a758bc01051bd1 *inst/doc/arnova.Rmd
-ff009762654ed410caa596ebc1bd698a *inst/doc/arnova.html
+b0ea79e91aacc47e08b047d24d44e38e *inst/doc/arnova.Rmd
+a04f7f9fe98e6c0b62652fcf39d49d28 *inst/doc/arnova.html
 ba16ca5a49d34395d8008e72c9122f57 *inst/etc/menus.txt
 6c5f088992db274d7d615a578aa89286 *inst/po/fr/LC_MESSAGES/R-RcmdrPlugin.aRnova.mo
 748d463e7b5eece35e9b805a14b80e3f *man/Moore.Rd
@@ -28,4 +28,4 @@ c91bb570b753185600cac34618abc248 *vignettes/Figure3b.png
 3cfd519e832928a93769542c4d926ca6 *vignettes/Figure6.png
 990d73d1fb31454c00378341d057bc12 *vignettes/Figure7.png
 908caebddc9e492ac4bea9fc5117e978 *vignettes/Image1.jpg
-d685e18782ce00c242a758bc01051bd1 *vignettes/arnova.Rmd
+b0ea79e91aacc47e08b047d24d44e38e *vignettes/arnova.Rmd

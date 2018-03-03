@@ -15,13 +15,19 @@ vignette: >
 RcmdrPlugin.aRnova is a R Commander add-on for repeated-measures and mixed-design ('split-plot') analysis of variance (ANOVA). In essence it adds a new menu entry for repeated measures that allows to deal with up to three within-subject factors and optionally with one or several between-subject factors.
 Besides, it also provides supplementary options and outputs to the existing `One Way ANOVA` and `Multi Way ANOVA` entries, such as the choice of type of sum of squares (II or III), the calculation of effect sizes, or multiway ANOVA post-hoc analysis.
 
-This tutorial (not finished yet...) aims to illustrate typical use of this plugin by replicating ANOVAs described in John Fox' *R and S-plus Companion to Applied Regession* (SAGE Publications Inc. 2002). While all steps are illustrated in the following, the user is expected to have minimal proficiency in using Rcmdr.
+This tutorial (not finished yet...) aims to illustrate typical use of this plugin by replicating ANOVAs described in particular in John Fox' *R and S-plus Companion to Applied Regession* (SAGE Publications Inc. 2002). While all steps are illustrated in the following, the user is expected to have minimal proficiency in using Rcmdr.
 
 ## 2. Installation and loading of RcmdrPlugin.aRnova
 
-The fastest way is to load directly the package from the following R command line which causes the package to load Rcmdr *with* the aRnova plugin:
+The aRnova plugin can be downloaded and installed using:
+
+    > install.packages("RcmdrPlugin.aRnova")
+
+To load the package the fastest way is to use the following R command line which causes the package to load Rcmdr *simultaneously with* the aRnova plugin:
 
     > library("RcmdrPlugin.aRnova")
+
+Note that if aRnova has just been installed, restart a new R session before launching this command (else the following error may occur: `Error : .onAttach failed in attachNamespace() for [....]`).
 
 Alternatively, after loading Rcmdr *without* the aRnova plugin using:
 
@@ -29,12 +35,9 @@ Alternatively, after loading Rcmdr *without* the aRnova plugin using:
 
 The aRnova package can then be loaded using the `Tools` > `Load Packages...` menu entry in Rcmdr. The user is then asked to restart Rcmdr so that the Plug-in is available.
 
-
 It can be verified that aRnova has been effectively loaded by checking that the supplementary entry `Repeated measures ANOVA...` has been added in the `Statistics` > `Means` Rcmr menu.
-
+ 
  <img src="Figure2.png" width="500px" />
-
-
 
 ## 3. One-way ANOVA
 
