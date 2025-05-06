@@ -23,36 +23,36 @@ measures anova.
 \details{
 Options:
 \itemize{
-\item{\code{'SS type'}} {type of sum of squares, default: \code{type = 2}. 
+\item{\code{'SS type'}: type of sum of squares, default: \code{type = 2}. 
 See Details in \code{\link[car]{Anova}}}
-\item{\code{'Effect size'}} {compute and prints effect size (partial eta squared)}
-\item{\code{'Summary statistics for groups'}} {prints summary statistics for
+\item{\code{'Effect size'}: compute and prints effect size (partial eta squared)}
+\item{\code{'Summary statistics for groups'}: prints summary statistics for
 groups formed by all combinations of factors}
-\item{\code{'Pairwise comparisons of means'}} {performs post-hoc Tukey's HSD test  
+\item{\code{'Pairwise comparisons of means'}: performs post-hoc Tukey's HSD test  
 on significant (p < .05) or close to significant (p < 0.1) effects.}  
 }
 On OK, the following operations are carried out:
 \itemize{
- \item {} {Generates a dataset containing complete cases and converted 
+ \item { Generates a dataset containing complete cases and converted 
  from 'wide' to 'long' format (extension  \code{.cplt.lg}), with the following columns added:
    \itemize{
-     \item{\code{'id'} (factor)} {identifies the subjects.}
-     \item{\code{'DV'} (numeric)} {the measure or dependent variable.}
-     \item{\code{'trial'} (int)} {variable that differentiates multiple 
+     \item{\code{'id'} (factor): identifies the subjects.}
+     \item{\code{'DV'} (numeric): the measure or dependent variable.}
+     \item{\code{'trial'} (int): variable that differentiates multiple 
      measures (\code{'DV'}) from the same subject (\code{'id'}).}
-     \item {\code{'<factorA>'} (factor)} {levels of the 
+     \item {\code{'<factorA>'} (factor): levels of the 
      within-suject factor A (one column per within subject factor)}
-     \item {\code{'<factorA.factorB:...>'} (factor)} {factor that 
+     \item {\code{'<factorA.factorB:...>'} (factor): factor that 
      differentiates multiple measures from groups or subjects with same factors 
      levels}
    }
  This 'long' dataset is useful for ploting means and post-hoc analysis  
  }
- \item{} {Computes repeated measure ANOVA using \code{\link[car]{Anova}}} 
- \item{} {Computes effect sizes (partial eta squared)}
- \item{} {Prints a summary of marginal statistics 
+ \item{Computes repeated measure ANOVA using \code{\link[car]{Anova}}} 
+ \item{Computes effect sizes (partial eta squared)}
+ \item{Prints a summary of marginal statistics 
  (count, min, max, mean, ds)}
- \item{} {runs post-hoc analysis on significant or close to significant effects}
+ \item{runs post-hoc analysis on significant or close to significant effects}
 }
 }
 \seealso{

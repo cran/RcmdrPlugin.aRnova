@@ -16,10 +16,10 @@ levels or more.
 
 On OK:
 \itemize{
- \item {} {The first valid entries are kept and stored in 
+ \item {The first valid entries are kept and stored in 
  \code{.withinfactors} and \code{.withinlevels} for factor names and 
  levels, respectively.} 
- \item {} {The next dialog box (\code{repMeasAnova(.withinfactors, .withinfactors)}
+ \item {The next dialog box (\code{repMeasAnova(.withinfactors, .withinfactors)}
   is launched.
  }
 }

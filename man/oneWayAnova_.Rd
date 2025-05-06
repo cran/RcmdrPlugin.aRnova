@@ -16,19 +16,19 @@ where supplementary options have  been added.
 \details{
 Options:  
 \itemize{
-\item{\code{'Effect size'}} {compute and prints effect size (partial eta squared)}
-\item{\code{'Summary statistics for groups'}} {prints summary statistics for
+\item{\code{'Effect size'}: compute and prints effect size (partial eta squared)}
+\item{\code{'Summary statistics for groups'}: prints summary statistics for
 groups formed by the beween subject factor}
-\item{\code{'Pairwise comparisons of means'}} {performs post-hoc Tukey's HSD test.}
+\item{\code{'Pairwise comparisons of means'}: performs post-hoc Tukey's HSD test.}
 }
 
 On OK, the following operations are carried out:
 \itemize{
- \item{} {Computes ANOVA using \code{\link{aov}}} 
- \item{} {Computes effect sizes (partial eta squared)}
- \item{} {Prints a summary of marginal statistics 
+ \item{Computes ANOVA using \code{\link{aov}}} 
+ \item{Computes effect sizes (partial eta squared)}
+ \item{Prints a summary of marginal statistics 
  (count, min, max, mean, ds)}
- \item{} {runs post-hoc analysis}
+ \item{runs post-hoc analysis}
 }
 }
 \seealso{

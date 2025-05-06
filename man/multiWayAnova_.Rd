@@ -16,22 +16,22 @@ where supplementary options have  been added.
 \details{
 Options:  
 \itemize{
-\item{\code{'SS type'}} {type of sum of squared, default: \code{type = 2}. 
+\item{\code{'SS type'}: type of sum of squared, default: \code{type = 2}. 
 See Details in \code{\link[car]{Anova}}}
-\item{\code{'Effect size'}} {compute and prints effect size (partial eta squares)}
-\item{\code{'Summary statistics for groups'}} {prints summary statistics for
+\item{\code{'Effect size'}: compute and prints effect size (partial eta squares)}
+\item{\code{'Summary statistics for groups'}: prints summary statistics for
 groups formed by all combinatuions of factors}
-\item{\code{'Pairwise comparisons of means'}} {performs post-hoc Tukey's HSD test  
+\item{\code{'Pairwise comparisons of means'}: performs post-hoc Tukey's HSD test  
 on significant (p < .05) or close to significant (p < 0.1) effects.}
 }  
 On OK, the following operations are carried out:
 \itemize{
- \item{} {Computes ANOVA using \code{\link[car]{Anova}}} 
- \item{} {Computes effect sizes (partial eta squared)}
- \item{} {Prints a summary of marginal statistics 
+ \item{Computes ANOVA using \code{\link[car]{Anova}}} 
+ \item{Computes effect sizes (partial eta squared)}
+ \item{Prints a summary of marginal statistics 
  (count, min, max, mean, ds)}
- \item{} {runs post-hoc analysis on significant or close to significant effects}
- \item {} {Generates an 'extended' dataset (extension  \code{.ext}) containing
+ \item{runs post-hoc analysis on significant or close to significant effects}
+ \item {Generates an 'extended' dataset (extension  \code{.ext}) containing
  additionak columns \code{'<factorA.factorB:...>'} that allows differentiate
  measures from groups or subjects with same factors levels.
  This 'extended' dataset is useful for ploting means and post-hoc analysis  

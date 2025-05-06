@@ -1,15 +1,21 @@
 Package: RcmdrPlugin.aRnova
 Type: Package
 Title: R Commander Plug-in for Repeated-Measures ANOVA
-Version: 0.0.5
-Date: 2018-03-03
-Author: Arnaud Travert [aut, cre],
-  Jessica Mange [aut]
+Version: 0.0.6
+Date: 2025-05-06
+Author: Arnaud Travert [aut, cre] (ORCID:
+    <https://orcid.org/0000-0002-9579-8910>),
+  Jessica Mange [aut] (ORCID: <https://orcid.org/0000-0001-6279-4721>)
 Maintainer: Arnaud Travert <arnaud.travert@unicaen.fr>
 Authors@R: c(
-              person(given = "Arnaud", family = "Travert", role = c("aut", "cre"), 
+              person(given = "Arnaud", family = "Travert", 
+                     role = c("aut", "cre"),
+                     comment = c(ORCID = "0000-0002-9579-8910"),
                      email = "arnaud.travert@unicaen.fr"),
-              person(given = "Jessica", family = "Mange", role = "aut")
+              person(given = "Jessica", family = "Mange", 
+                     role = "aut",
+                     comment = c(ORCID = "0000-0001-6279-4721"),
+                     email = "jessica.mange@unicaen.fr")
              )
 Depends: R (>= 3.2.0)
 Imports: Rcmdr
@@ -27,8 +33,8 @@ License: GPL (>= 2)
 LazyLoad: yes
 LazyData: yes
 NeedsCompilation: no
-RoxygenNote: 6.0.1
+RoxygenNote: 7.3.2
 VignetteBuilder: knitr
-Packaged: 2018-03-03 11:53:45 UTC; Arnaud
+Packaged: 2025-05-06 11:31:37 UTC; Arnaud
 Repository: CRAN
-Date/Publication: 2018-03-03 12:30:33 UTC
+Date/Publication: 2025-05-06 12:20:05 UTC

@@ -11,6 +11,8 @@
 #
 # ----------------------------------------------------------------------------
 # Release Notes:
+#     2025-05-06, version 0.0.6: addition of README, AUTHORS and LICENSE for 
+#                 submission to HAL + fixes of warnings
 #     2018-03-03, version 0.0.5: bug fix: effect size for oneway repeated 
 #       measure
 #     2017-08-08, version 0.0.4: initial release on CRAN
@@ -62,10 +64,10 @@ utils::globalVariables(c(".myAnova", "buttonsFrame", "checkBoxFrame","dataTab",
 #' 
 #' On OK:
 #' \itemize{
-#'  \item {} {The first valid entries are kept and stored in 
+#'  \item { The first valid entries are kept and stored in 
 #'  \code{.withinfactors} and \code{.withinlevels} for factor names and 
 #'  levels, respectively.} 
-#'  \item {} {The next dialog box (\code{repMeasAnova(.withinfactors, .withinfactors)}
+#'  \item {The next dialog box (\code{repMeasAnova(.withinfactors, .withinfactors)}
 #'   is launched.
 #'  }
 #' }
@@ -223,36 +225,36 @@ repMeasAnovaSetup <- function () {
 #' @details
 #' Options:
 #' \itemize{
-#' \item{\code{'SS type'}} {type of sum of squares, default: \code{type = 2}. 
+#' \item{\code{'SS type'}: type of sum of squares, default: \code{type = 2}. 
 #' See Details in \code{\link[car]{Anova}}}
-#' \item{\code{'Effect size'}} {compute and prints effect size (partial eta squared)}
-#' \item{\code{'Summary statistics for groups'}} {prints summary statistics for
+#' \item{\code{'Effect size'}: compute and prints effect size (partial eta squared)}
+#' \item{\code{'Summary statistics for groups'}: prints summary statistics for
 #' groups formed by all combinations of factors}
-#' \item{\code{'Pairwise comparisons of means'}} {performs post-hoc Tukey's HSD test  
+#' \item{\code{'Pairwise comparisons of means'}: performs post-hoc Tukey's HSD test  
 #' on significant (p < .05) or close to significant (p < 0.1) effects.}  
 #' }
 #' On OK, the following operations are carried out:
 #' \itemize{
-#'  \item {} {Generates a dataset containing complete cases and converted 
+#'  \item{Generates a dataset containing complete cases and converted 
 #'  from 'wide' to 'long' format (extension  \code{.cplt.lg}), with the following columns added:
 #'    \itemize{
-#'      \item{\code{'id'} (factor)} {identifies the subjects.}
-#'      \item{\code{'DV'} (numeric)} {the measure or dependent variable.}
-#'      \item{\code{'trial'} (int)} {variable that differentiates multiple 
+#'      \item{\code{'id'} (factor): identifies the subjects.}
+#'      \item{\code{'DV'} (numeric): the measure or dependent variable.}
+#'      \item{\code{'trial'} (int): variable that differentiates multiple 
 #'      measures (\code{'DV'}) from the same subject (\code{'id'}).}
-#'      \item {\code{'<factorA>'} (factor)} {levels of the 
+#'      \item {\code{'<factorA>'} (factor): levels of the 
 #'      within-suject factor A (one column per within subject factor)}
-#'      \item {\code{'<factorA.factorB:...>'} (factor)} {factor that 
+#'      \item {\code{'<factorA.factorB:...>'} (factor): factor that 
 #'      differentiates multiple measures from groups or subjects with same factors 
 #'      levels}
 #'    }
 #'  This 'long' dataset is useful for ploting means and post-hoc analysis  
 #'  }
-#'  \item{} {Computes repeated measure ANOVA using \code{\link[car]{Anova}}} 
-#'  \item{} {Computes effect sizes (partial eta squared)}
-#'  \item{} {Prints a summary of marginal statistics 
+#'  \item{Computes repeated measure ANOVA using \code{\link[car]{Anova}}} 
+#'  \item{Computes effect sizes (partial eta squared)}
+#'  \item{Prints a summary of marginal statistics 
 #'  (count, min, max, mean, ds)}
-#'  \item{} {runs post-hoc analysis on significant or close to significant effects}
+#'  \item{runs post-hoc analysis on significant or close to significant effects}
 #' }
 #' 
 #' @return None
@@ -768,18 +770,19 @@ repMeasAnova <- function(.withinfactors, .withinlevels){
 #' 
 #' Options:  
 #' \itemize{
-#' \item{\code{'Effect size'}} {compute and prints effect size (partial eta squared)}
+#' \item{\code{'Effect size'}: compute and prints effect size (partial eta squared)}
+#' \item{\code{'Effect size'}: compute and prints effect size (partial eta squared)}
 #' \item{\code{'Summary statistics for groups'}} {prints summary statistics for
 #' groups formed by the beween subject factor}
 #' \item{\code{'Pairwise comparisons of means'}} {performs post-hoc Tukey's HSD test.}
 #' }  
 #' @details On OK, the following operations are carried out:
 #' \itemize{
-#'  \item{} {Computes ANOVA using \code{\link{aov}}} 
-#'  \item{} {Computes effect sizes (partial eta squared)}
-#'  \item{} {Prints a summary of marginal statistics 
+#'  \item{Computes ANOVA using \code{\link{aov}}} 
+#'  \item{Computes effect sizes (partial eta squared)}
+#'  \item{Prints a summary of marginal statistics 
 #'  (count, min, max, mean, ds)}
-#'  \item{} {runs post-hoc analysis}
+#'  \item{runs post-hoc analysis}
 #' }
 #' 
 #' @return None
@@ -942,20 +945,20 @@ oneWayAnova_ <- function () {
 #' \itemize{
 #' \item{\code{'SS type'}} {type of sum of squared, default: \code{type = 2}. 
 #' See Details in \code{\link[car]{Anova}}}
-#' \item{\code{'Effect size'}} {compute and prints effect size (partial eta squares)}
-#' \item{\code{'Summary statistics for groups'}} {prints summary statistics for
+#' \item{\code{'Effect size'}; compute and prints effect size (partial eta squares)}
+#' \item{\code{'Summary statistics for groups'}: prints summary statistics for
 #' groups formed by all combinatuions of factors}
-#' \item{\code{'Pairwise comparisons of means'}} {performs post-hoc Tukey's HSD test  
+#' \item{\code{'Pairwise comparisons of means'}: performs post-hoc Tukey's HSD test  
 #' on significant (p < .05) or close to significant (p < 0.1) effects.}
 #' }  
 #' On OK, the following operations are carried out:
 #' \itemize{
-#'  \item{} {Computes ANOVA using \code{\link[car]{Anova}}} 
-#'  \item{} {Computes effect sizes (partial eta squared)}
-#'  \item{} {Prints a summary of marginal statistics 
+#'  \item{Computes ANOVA using \code{\link[car]{Anova}}} 
+#'  \item{Computes effect sizes (partial eta squared)}
+#'  \item{Prints a summary of marginal statistics 
 #'  (count, min, max, mean, ds)}
-#'  \item{} {runs post-hoc analysis on significant or close to significant effects}
-#'  \item {} {Generates an 'extended' dataset (extension  \code{.ext}) containing
+#'  \item{runs post-hoc analysis on significant or close to significant effects}
+#'  \item{Generates an 'extended' dataset (extension  \code{.ext}) containing
 #'  additionak columns \code{'<factorA.factorB:...>'} that allows differentiate
 #'  measures from groups or subjects with same factors levels.
 #'  This 'extended' dataset is useful for ploting means and post-hoc analysis  
